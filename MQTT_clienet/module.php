@@ -297,7 +297,7 @@
         }
  
         public function onReceive(string $para) {
-            $paraDecode = json_decode($para);
+            $paraDecode = json_decode($para)->Buffer;
             IPS_LogMessage(__CLASS__,"onReceive hat das hier empfangen: ". $paraDecode);
             if($paraDecode['SENDER']=='MQTT_CONNECT'){
                 $clientid=$this->GetClientID();                               
