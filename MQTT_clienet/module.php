@@ -297,11 +297,19 @@
         }
  
         public function onReceive(string $para) {
-            $paraDecode = json_decode($para)->Buffer;
-            IPS_LogMessage(__CLASS__,"onReceive hat das hier empfangen: ". $paraDecode);
-            if($paraDecode['SENDER']=='MQTT_CONNECT'){
-                $clientid=$this->GetClientID();                               
-                IPS_LogMessage(__CLASS__,__FUNCTION__."::Connection to ClientID $clientid run");                
+            IPS_LogMessage(__CLASS__,"onReceive hat das hier empfangen: ". $para);
+          
+          
+             $data = json_decode($para);
+             //entry for data from parent
+
+            if (is_object($data)) { $data = get_object_vars($data);}
+            if (isset($data['DataID'])) {
+                $target = $data['DataID'];          
+                if($data['SENDER']=='MQTT_CONNECT'){
+                    $clientid=$this->GetClientID();                               
+                    IPS_LogMessage(__CLASS__,__FUNCTION__."::Connection to ClientID $clientid run");                
+                }
             }
             $scriptid = $this->ReadPropertyInteger("script");
             IPS_RunScriptEx($scriptid,$para);
