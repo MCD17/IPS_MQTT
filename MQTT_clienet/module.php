@@ -297,6 +297,7 @@
         }
  
         public function onReceive(string $para) {
+            IPS_LogMessage(__CLASS__,"onReceive hat das hier empfangen:".$para);
             if($para['SENDER']=='MQTT_CONNECT'){
                 $clientid=$this->GetClientID();                               
                 IPS_LogMessage(__CLASS__,__FUNCTION__."::Connection to ClientID $clientid run");                
