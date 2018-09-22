@@ -198,7 +198,7 @@ class phpMQTT {
                             }
                             $this->status = 2;   // Staus Verbunden
                             // callback
-                            $para = json_encode(Array("SENDER" => "MQTT_CONNECT"));
+                            $para = (Array("SENDER" => "MQTT_CONNECT");
                             $call = $this->onReceive;
                             $this->owner->$call($para);
                         } 
@@ -351,7 +351,7 @@ class phpMQTT {
             }    
 
             // callback
-            $para = json_encode(Array("TOPIC" => $topic, "MSG" => $msg,"SENDER" => $cmd));
+            $para = Array("TOPIC" => $topic, "MSG" => $msg,"SENDER" => $cmd);
             $call = $this->onReceive;
             $this->owner->$call($para);
 	}
