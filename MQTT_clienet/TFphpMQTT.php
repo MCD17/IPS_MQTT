@@ -351,7 +351,7 @@ class phpMQTT {
             }    
 
             // callback
-            $para = Array("TOPIC" => $topic, "MSG" => $msg,"SENDER" => $cmd);
+            $para = jsaon_encode(Array("TOPIC" => $topic, "MSG" => $msg,"SENDER" => $cmd));
             $call = $this->onReceive;
             $this->owner->$call($para);
 	}
